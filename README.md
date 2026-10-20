@@ -17,7 +17,7 @@ Pulse Connect é um cliente Android leve e de código aberto para a nuvem Uconne
 - **Localização:** mapa com a última posição conhecida e há quanto tempo foi atualizada. O app pede uma posição nova ao carro só quando a atual tem mais de 10 minutos, ou quando você pede.
 - **Widget para a tela inicial:**
   - Formato compacto em uma linha ou completo em 4×2, no mesmo visual do app.
-  - Destravar e ligar exigem rosto ou impressão digital; travar e desligar pedem confirmação.
+  - Todos os comandos exigem rosto ou impressão digital, com o bloqueio de tela do aparelho como alternativa.
 - **Vários veículos:** cards com a imagem oficial de cada carro. Marque um favorito e o app abre direto nele.
 - **Painel de dados:** combustível (% e litros), autonomia, hodômetro, bateria, pneus, portas e vidros. Também mostra o JSON bruto da API para quem quer ir além.
 - **Mensagens claras:** em falhas de rede, o app diz se o comando chegou ou não a ser enviado.
@@ -28,12 +28,12 @@ Pulse Connect é um cliente Android leve e de código aberto para a nuvem Uconne
 - **Sem intermediários:** nenhum servidor próprio. As requisições vão do aparelho direto para a nuvem da Stellantis. As únicas outras conexões são o mapa (OpenStreetMap, com a biblioteca Leaflet via unpkg) e as imagens oficiais dos veículos da FCA.
 - **Credenciais protegidas:** e-mail, senha e PIN ficam apenas no aparelho, cifrados com AES/GCM numa chave do Android Keystore.
 - **Sem rastreamento:** nenhuma telemetria, analytics ou envio de logs.
-- **Barreira contra acidentes:** os comandos sensíveis do widget passam por biometria ou pelo bloqueio de tela do aparelho.
+- **Biometria:** com o login salvo, o app pede rosto ou impressão digital ao abrir, e cada comando do widget também passa por ela.
 
 ## Como usar
 
 1. Instale o APK e entre com o e-mail, a senha e o PIN da sua conta Fiat/Uconnect.
-2. Deixe **Manter conectado** ativo para o app entrar sozinho e para o widget funcionar em segundo plano.
+2. Deixe **Manter conectado** ativo para o app entrar sozinho, só com a sua biometria, e para o widget funcionar em segundo plano.
 3. Para o widget, segure na tela inicial → **Widgets** → **Pulse Connect**. Ele funciona em uma linha ou em 4×2.
 
 ## Como funciona

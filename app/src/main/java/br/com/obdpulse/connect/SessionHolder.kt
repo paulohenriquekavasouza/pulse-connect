@@ -7,6 +7,7 @@ object SessionHolder {
     @Volatile var session: UconnectSession? = null
     @Volatile var pin: String? = null
     @Volatile var vehicles: List<UconnectVehicle> = emptyList()
+    @Volatile var unlocked = false
     @Volatile var pending: PendingAction? = null
     @Volatile var returnTo: Class<*>? = null
     @Volatile private var loggedInAtMs = 0L
@@ -24,6 +25,7 @@ object SessionHolder {
         session = null
         pin = null
         vehicles = emptyList()
+        unlocked = false
         pending = null
         returnTo = null
         loggedInAtMs = 0L

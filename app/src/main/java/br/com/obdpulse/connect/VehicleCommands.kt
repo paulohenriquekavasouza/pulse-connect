@@ -9,8 +9,8 @@ data class CommandSpec(
     val sending: Int,
     val sent: Int,
     val sentShort: Int,
+    val biometricTitle: Int,
     val accent: Boolean = false,
-    val needsConfirmation: Boolean = false,
 )
 
 object VehicleCommands {
@@ -19,19 +19,22 @@ object VehicleCommands {
         CommandSpec(
             UconnectClient.CMD_LOCK, R.string.action_lock, R.drawable.ic_lock,
             R.string.action_locking, R.string.action_locked, R.string.action_locked_short,
+            R.string.biometric_lock_title,
         ),
         CommandSpec(
             UconnectClient.CMD_UNLOCK, R.string.action_unlock, R.drawable.ic_lock_open,
             R.string.action_unlocking, R.string.action_unlocked, R.string.action_unlocked_short,
+            R.string.biometric_unlock_title,
         ),
         CommandSpec(
             UconnectClient.CMD_START, R.string.action_start, R.drawable.ic_power,
             R.string.action_starting, R.string.action_started, R.string.action_started_short,
-            accent = true, needsConfirmation = true,
+            R.string.biometric_start_title, accent = true,
         ),
         CommandSpec(
             UconnectClient.CMD_STOP, R.string.action_stop, R.drawable.ic_power_off,
             R.string.action_stopping, R.string.action_stopped, R.string.action_stopped_short,
+            R.string.biometric_stop_title,
         ),
     )
 

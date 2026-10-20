@@ -2,7 +2,6 @@ package br.com.obdpulse.connect
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -201,7 +200,7 @@ class VehicleActivity : Activity() {
                 }
             }
             tile.findViewById<TextView>(R.id.action_label).setText(spec.label)
-            tile.setOnClickListener { onAction(spec) }
+            tile.setOnClickListener { execute(spec.command) }
             if (index > 0) (tile.layoutParams as LinearLayout.LayoutParams).marginStart = gap
             actionsRow.addView(tile)
             actionViews += tile
@@ -209,19 +208,6 @@ class VehicleActivity : Activity() {
         actionsLoading.visibility = View.GONE
         actionsRow.visibility = if (specs.isEmpty()) View.GONE else View.VISIBLE
         findViewById<View>(R.id.vehicle_no_actions).visibility = if (specs.isEmpty()) View.VISIBLE else View.GONE
-    }
-
-    private fun onAction(spec: CommandSpec) {
-        if (!spec.needsConfirmation) {
-            execute(spec.command)
-            return
-        }
-        AlertDialog.Builder(this)
-            .setTitle(R.string.confirm_start_title)
-            .setMessage(getString(R.string.confirm_start_message, vehicle.name))
-            .setNegativeButton(R.string.cancel, null)
-            .setPositiveButton(R.string.confirm_start_ok) { _, _ -> execute(spec.command) }
-            .show()
     }
 
     private fun execute(command: String) {
