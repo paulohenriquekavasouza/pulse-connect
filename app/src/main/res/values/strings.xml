@@ -72,13 +72,13 @@
     <string name="widget_channel">Comandos remotos</string>
     <string name="widget_notification">Enviando comando ao veículo…</string>
 
-    <string name="confirm_start_title">Ligar o veículo?</string>
-    <string name="confirm_start_message">O motor de %1$s será ligado remotamente. Confirme que o veículo está em local seguro e ventilado.</string>
-    <string name="confirm_start_ok">Ligar</string>
-    <string name="confirm_lock_title">Travar o veículo?</string>
-    <string name="confirm_lock_message">As portas de %1$s serão travadas remotamente.</string>
-    <string name="confirm_stop_title">Desligar o veículo?</string>
-    <string name="confirm_stop_message">O motor de %1$s será desligado remotamente.</string>
+    <string name="biometric_lock_title">Confirme para travar</string>
+    <string name="biometric_stop_title">Confirme para desligar o veículo</string>
+    <string name="biometric_app_title">Desbloquear o Pulse Connect</string>
+    <string name="biometric_app_subtitle">Use a biometria ou o bloqueio de tela</string>
+    <string name="login_locked">O Pulse Connect está bloqueado.</string>
+    <string name="login_unlock">Desbloquear</string>
+    <string name="login_other_account">Entrar com outra conta</string>
     <string name="biometric_unlock_title">Confirme para destravar</string>
     <string name="biometric_start_title">Confirme para ligar o veículo</string>
     <string name="biometric_no_lock">Configure um bloqueio de tela (biometria, PIN ou padrão) para usar este comando pelo widget.</string>

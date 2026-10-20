@@ -28,6 +28,9 @@ class LoginActivity : Activity() {
     private lateinit var connect: Button
     private lateinit var clear: Button
     private lateinit var status: TextView
+    private lateinit var locked: View
+    private lateinit var lockedText: TextView
+    private lateinit var gate: BiometricGate
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,23 +45,65 @@ class LoginActivity : Activity() {
         connect = findViewById(R.id.uconnect_connect)
         clear = findViewById(R.id.uconnect_clear)
         status = findViewById(R.id.uconnect_status)
+        locked = findViewById(R.id.login_locked)
+        lockedText = findViewById(R.id.login_locked_text)
+        gate = BiometricGate(
+            this,
+            onSuccess = {
+                SessionHolder.unlocked = true
+                loginWithSaved()
+            },
+            onFailure = { message -> showLocked(message) },
+        )
+        findViewById<View>(R.id.login_unlock).setOnClickListener { unlock() }
+        findViewById<View>(R.id.login_other_account).setOnClickListener {
+            clearCredentials()
+            setBusy(false, null)
+        }
 
         connect.setOnClickListener { doLogin(fromUser = true) }
         clear.setOnClickListener { clearCredentials() }
 
         val saved = UconnectStore.isSaved(this)
         clear.visibility = if (saved) View.VISIBLE else View.GONE
-        if (saved) {
-            email.setText(UconnectStore.email(this).orEmpty())
-            password.setText(UconnectStore.password(this).orEmpty())
-            pin.setText(UconnectStore.pin(this).orEmpty())
-            doLogin(fromUser = false)
+        if (!saved) return
+        if (SessionHolder.unlocked || !gate.isAvailable()) {
+            SessionHolder.unlocked = true
+            loginWithSaved()
+        } else {
+            unlock()
         }
     }
 
     override fun onDestroy() {
+        gate.cancel()
         scope.cancel()
         super.onDestroy()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        gate.onActivityResult(requestCode, resultCode)
+    }
+
+    private fun unlock() {
+        showLocked(null)
+        gate.start(getString(R.string.biometric_app_title), getString(R.string.biometric_app_subtitle))
+    }
+
+    private fun showLocked(message: CharSequence?) {
+        form.visibility = View.GONE
+        busy.visibility = View.GONE
+        locked.visibility = View.VISIBLE
+        lockedText.text = message ?: getString(R.string.login_locked)
+    }
+
+    private fun loginWithSaved() {
+        email.setText(UconnectStore.email(this).orEmpty())
+        password.setText(UconnectStore.password(this).orEmpty())
+        pin.setText(UconnectStore.pin(this).orEmpty())
+        doLogin(fromUser = false)
     }
 
     private fun doLogin(fromUser: Boolean) {
@@ -74,6 +119,7 @@ class LoginActivity : Activity() {
             try {
                 val session = UconnectClient.login(user, pass)
                 SessionHolder.onLogin(session, pin.text.toString().ifBlank { UconnectStore.pin(this@LoginActivity) })
+                SessionHolder.unlocked = true
                 busyText.setText(R.string.uconnect_status_vehicles)
                 val vehicles = UconnectClient.listVehicles(session)
                 SessionHolder.vehicles = vehicles
@@ -116,6 +162,7 @@ class LoginActivity : Activity() {
     }
 
     private fun setBusy(isBusy: Boolean, text: Int?) {
+        locked.visibility = View.GONE
         form.visibility = if (isBusy) View.GONE else View.VISIBLE
         busy.visibility = if (isBusy) View.VISIBLE else View.GONE
         text?.let(busyText::setText)
