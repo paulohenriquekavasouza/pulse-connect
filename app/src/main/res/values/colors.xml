@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_top">#1B2330</color>
+    <color name="bg_bottom">#0A0C11</color>
+    <color name="surface">#161B25</color>
+    <color name="surface_elevated">#1E2634</color>
+    <color name="stroke">#2A3344</color>
+    <color name="text_primary">#F2F5FA</color>
+    <color name="text_secondary">#99A2B2</color>
+    <color name="text_muted">#5E6778</color>
+    <color name="accent">#EF5350</color>
+    <color name="accent_pressed">#C62828</color>
+    <color name="accent_dark">#7F0000</color>
+    <color name="positive">#66BB6A</color>
+    <color name="amber">#FFCA28</color>
+    <color name="pill_track">#242C3A</color>
+    <color name="stage_glow">#2B3548</color>
+    <color name="stage_top">#1D2431</color>
+    <color name="accent_soft">#3A1E24</color>
+</resources>

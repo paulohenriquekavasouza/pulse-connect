@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:clipToOutline="true"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:id="@+id/widget_header"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="46dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/widget_image"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:maxHeight="80dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/vehicle_image"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_car_widget" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/widget_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:text="@string/app_name"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/widget_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/widget_ready"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/widget_progress"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="8dp"
+            android:indeterminateTint="@color/text_secondary"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/widget_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/widget_lock"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_tile_bg"
+            android:contentDescription="@string/action_lock">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:background="@drawable/action_icon_bg"
+                android:contentDescription="@null"
+                android:padding="12dp"
+                android:src="@drawable/ic_lock"
+                android:tint="@color/text_primary" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/widget_unlock"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_tile_bg"
+            android:contentDescription="@string/action_unlock">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:background="@drawable/action_icon_bg"
+                android:contentDescription="@null"
+                android:padding="12dp"
+                android:src="@drawable/ic_lock_open"
+                android:tint="@color/text_primary" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/widget_start"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_tile_bg"
+            android:contentDescription="@string/action_start">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:background="@drawable/action_icon_accent_bg"
+                android:contentDescription="@null"
+                android:padding="12dp"
+                android:src="@drawable/ic_power"
+                android:tint="@color/accent" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/widget_stop"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/widget_tile_bg"
+            android:contentDescription="@string/action_stop">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:background="@drawable/action_icon_bg"
+                android:contentDescription="@null"
+                android:padding="12dp"
+                android:src="@drawable/ic_power_off"
+                android:tint="@color/text_primary" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pulse Connect</string>
+
+    <string name="uconnect_title">Pulse Connect</string>
+    <string name="uconnect_subtitle">Entre com a sua conta Fiat/Uconnect. As credenciais ficam só neste aparelho.</string>
+    <string name="uconnect_account">Conta</string>
+    <string name="uconnect_email_hint">E-mail</string>
+    <string name="uconnect_password_hint">Senha</string>
+    <string name="uconnect_pin_hint">PIN de 4 dígitos (para comandos)</string>
+    <string name="uconnect_save">Manter conectado neste aparelho</string>
+    <string name="uconnect_connect">Entrar</string>
+    <string name="uconnect_clear">Apagar credenciais salvas</string>
+    <string name="uconnect_cleared">Credenciais apagadas deste aparelho.</string>
+    <string name="uconnect_status_connecting">Conectando à sua conta…</string>
+    <string name="uconnect_status_vehicles">Buscando seus veículos…</string>
+    <string name="uconnect_status_no_vehicles">Conectado, mas nenhum veículo foi encontrado na conta.</string>
+    <string name="uconnect_status_error">Erro: %1$s</string>
+    <string name="command_not_sent">O comando não foi enviado.</string>
+    <string name="command_maybe_sent">O comando pode ter chegado ao veículo; confira antes de repetir.</string>
+    <string name="uconnect_need_credentials">Informe e-mail e senha.</string>
+    <string name="uconnect_need_pin">Informe o PIN na tela de login para enviar comandos.</string>
+    <string name="uconnect_session_expired">Sessão expirada. Reconectando…</string>
+
+    <string name="garage_title">Seus veículos</string>
+    <string name="garage_subtitle">Escolha um veículo. Marque a estrela para abrir direto nele.</string>
+    <string name="garage_favorite">Favorito</string>
+    <string name="garage_favorite_set">%1$s definido como favorito.</string>
+    <string name="garage_favorite_cleared">Favorito removido.</string>
+
+    <string name="vehicle_actions">Comandos</string>
+    <string name="vehicle_checking_actions">Verificando comandos disponíveis…</string>
+    <string name="vehicle_actions_failed">Não foi possível confirmar os comandos. Toque para tentar novamente.</string>
+    <string name="vehicle_no_actions">Este veículo não informou comandos remotos disponíveis.</string>
+    <string name="vehicle_location">Localização</string>
+    <string name="vehicle_location_loading">Carregando localização…</string>
+    <string name="vehicle_location_none">Localização indisponível.</string>
+    <string name="vehicle_location_updated">Atualizada em %1$s</string>
+    <string name="vehicle_location_approx">Posição aproximada</string>
+    <string name="vehicle_locating">Solicitando a posição atual ao veículo…</string>
+    <string name="vehicle_located">Localização atualizada.</string>
+    <string name="vehicle_locate_timeout">O veículo não respondeu a tempo. Exibindo a última posição conhecida.</string>
+    <string name="vehicle_locate_no_pin">Sem PIN: exibindo a última posição conhecida.</string>
+    <string name="vehicle_refresh_location">Atualizar localização</string>
+    <string name="vehicle_back">Voltar</string>
+    <string name="vehicle_menu">Mais opções</string>
+    <string name="vehicle_image">Imagem do veículo</string>
+
+    <string name="action_lock">Travar</string>
+    <string name="action_unlock">Destravar</string>
+    <string name="action_start">Ligar</string>
+    <string name="action_stop">Desligar</string>
+    <string name="action_locking">Enviando travamento…</string>
+    <string name="action_unlocking">Enviando destravamento…</string>
+    <string name="action_starting">Enviando partida remota…</string>
+    <string name="action_stopping">Enviando desligamento…</string>
+    <string name="action_locked">Comando de travar enviado ao veículo.</string>
+    <string name="action_unlocked">Comando de destravar enviado ao veículo.</string>
+    <string name="action_started">Comando de ligar enviado ao veículo.</string>
+    <string name="action_stopped">Comando de desligar enviado ao veículo.</string>
+
+    <string name="action_locked_short">Travamento enviado</string>
+    <string name="action_unlocked_short">Destravamento enviado</string>
+    <string name="action_started_short">Partida remota enviada</string>
+    <string name="action_stopped_short">Desligamento enviado</string>
+
+    <string name="widget_description">Comandos do seu veículo na tela inicial</string>
+    <string name="widget_ready">Pronto para comandos</string>
+    <string name="widget_sign_in">Abra o app e entre com “Manter conectado” ativado.</string>
+    <string name="widget_need_pin">PIN não salvo. Entre no app informando o PIN.</string>
+    <string name="widget_sent">%1$s · %2$s</string>
+    <string name="widget_channel">Comandos remotos</string>
+    <string name="widget_notification">Enviando comando ao veículo…</string>
+
+    <string name="confirm_start_title">Ligar o veículo?</string>
+    <string name="confirm_start_message">O motor de %1$s será ligado remotamente. Confirme que o veículo está em local seguro e ventilado.</string>
+    <string name="confirm_start_ok">Ligar</string>
+    <string name="confirm_lock_title">Travar o veículo?</string>
+    <string name="confirm_lock_message">As portas de %1$s serão travadas remotamente.</string>
+    <string name="confirm_stop_title">Desligar o veículo?</string>
+    <string name="confirm_stop_message">O motor de %1$s será desligado remotamente.</string>
+    <string name="biometric_unlock_title">Confirme para destravar</string>
+    <string name="biometric_start_title">Confirme para ligar o veículo</string>
+    <string name="biometric_no_lock">Configure um bloqueio de tela (biometria, PIN ou padrão) para usar este comando pelo widget.</string>
+    <string name="confirm_logout_title">Sair da conta?</string>
+    <string name="confirm_logout_message">Você será desconectado e as credenciais salvas neste aparelho serão apagadas.</string>
+    <string name="confirm_logout_ok">Sair</string>
+    <string name="cancel">Cancelar</string>
+
+    <string name="menu_status">Status</string>
+    <string name="menu_json">JSON da API</string>
+    <string name="menu_favorite_add">Marcar como favorito</string>
+    <string name="menu_favorite_remove">Remover favorito</string>
+    <string name="menu_switch_vehicle">Trocar veículo</string>
+    <string name="menu_logout">Sair</string>
+
+    <string name="refresh">Atualizar</string>
+    <string name="status_title">Status do veículo</string>
+    <string name="status_loading">Carregando…</string>
+    <string name="status_updated">Atualizado.</string>
+    <string name="status_partial">Atualizado, mas alguns dados não carregaram: %1$s</string>
+    <string name="status_section_vehicle">Veículo</string>
+    <string name="status_section_panel">Painel</string>
+    <string name="status_section_tires">Pneus</string>
+    <string name="status_section_doors">Portas e janelas</string>
+    <string name="status_section_location">Localização e horários</string>
+
+    <string name="json_title">JSON da API</string>
+    <string name="json_copy">Copiar JSON</string>
+    <string name="json_copied">JSON copiado</string>
+</resources>

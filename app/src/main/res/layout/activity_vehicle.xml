@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/TopBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/vehicle_back"
+            style="@style/IconButton"
+            android:contentDescription="@string/vehicle_back"
+            android:src="@drawable/ic_arrow_back"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/vehicle_title"
+            style="@style/TopBarTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/vehicle_menu"
+            style="@style/IconButton"
+            android:contentDescription="@string/vehicle_menu"
+            android:src="@drawable/ic_more_vert" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/vehicle_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/Screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/vehicle_subtitle"
+                style="@style/BodyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp" />
+
+            <ImageView
+                android:id="@+id/vehicle_image"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/stage_bg"
+                android:contentDescription="@string/vehicle_image"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                style="@style/SectionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/vehicle_actions" />
+
+            <LinearLayout
+                android:id="@+id/vehicle_actions_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/card_bg"
+                android:gravity="center"
+                android:minHeight="104dp"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ProgressBar
+                    android:id="@+id/vehicle_actions_progress"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="12dp"
+                    android:indeterminateTint="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/vehicle_actions_status"
+                    style="@style/BodyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vehicle_checking_actions" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vehicle_actions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/vehicle_no_actions"
+                style="@style/BodyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/vehicle_no_actions"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/vehicle_message"
+                style="@style/BodyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_horizontal"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SectionLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/vehicle_location" />
+
+                <ProgressBar
+                    android:id="@+id/vehicle_locating"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:indeterminateTint="@color/text_secondary"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/vehicle_locate"
+                    style="@style/IconButton"
+                    android:layout_marginEnd="-12dp"
+                    android:contentDescription="@string/vehicle_refresh_location"
+                    android:src="@drawable/ic_refresh" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:padding="8dp">
+
+                <FrameLayout
+                    android:id="@+id/vehicle_map_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:background="@drawable/map_frame_bg">
+
+                    <WebView
+                        android:id="@+id/vehicle_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/vehicle_map_placeholder"
+                        style="@style/BodyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:text="@string/vehicle_location_loading" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/vehicle_location_updated"
+                    style="@style/ValueText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="—" />
+
+                <TextView
+                    android:id="@+id/vehicle_location_note"
+                    style="@style/BodyText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
