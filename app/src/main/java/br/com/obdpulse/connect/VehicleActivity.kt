@@ -2,13 +2,18 @@ package br.com.obdpulse.connect
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.text.InputFilter
+import android.text.InputType
 import android.webkit.WebView
+import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupMenu
@@ -107,12 +112,43 @@ class VehicleActivity : Activity() {
     }
 
     private fun bindHeader() {
-        findViewById<TextView>(R.id.vehicle_title).text = vehicle.name
-        findViewById<TextView>(R.id.vehicle_subtitle).apply {
-            text = vehicle.subtitle
-            visibility = if (vehicle.subtitle.isBlank()) View.GONE else View.VISIBLE
-        }
+        bindNames()
         ImageLoader.bindVehicle(scope, image, vehicle.imageUrl)
+    }
+
+    private fun bindNames() {
+        val shown = VehicleNicknames.apply(this, vehicle)
+        findViewById<TextView>(R.id.vehicle_title).text = shown.name
+        findViewById<TextView>(R.id.vehicle_subtitle).apply {
+            text = shown.subtitle
+            visibility = if (shown.subtitle.isBlank()) View.GONE else View.VISIBLE
+        }
+    }
+
+    private fun editNickname() {
+        val pad = (resources.displayMetrics.density * 20).toInt()
+        val input = EditText(this).apply {
+            setText(VehicleNicknames.get(this@VehicleActivity, vehicle.vin).orEmpty())
+            hint = vehicle.name
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
+            filters = arrayOf(InputFilter.LengthFilter(VehicleNicknames.MAX_LENGTH))
+            isSingleLine = true
+            setSelection(text.length)
+        }
+        val container = FrameLayout(this).apply {
+            setPadding(pad, pad / 2, pad, 0)
+            addView(input)
+        }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.nickname_title)
+            .setMessage(getString(R.string.nickname_message, vehicle.name))
+            .setView(container)
+            .setNegativeButton(R.string.cancel, null)
+            .setPositiveButton(R.string.nickname_save) { _, _ ->
+                VehicleNicknames.set(this, vehicle.vin, input.text.toString())
+                bindNames()
+            }
+            .show()
     }
 
     private fun loadVehicleInfo(pendingCommand: String?) {
@@ -138,7 +174,7 @@ class VehicleActivity : Activity() {
                 if (fresh != null) {
                     val imageChanged = fresh.imageUrl != vehicle.imageUrl
                     vehicle = fresh
-                    if (imageChanged) bindHeader() else findViewById<TextView>(R.id.vehicle_title).text = fresh.name
+                    if (imageChanged) bindHeader() else bindNames()
                 }
                 buildActions()
                 if (pendingCommand != null && pendingCommand in vehicle.commands) execute(pendingCommand)
@@ -344,13 +380,15 @@ class VehicleActivity : Activity() {
             menu.add(0, MENU_STATUS, 0, R.string.menu_status)
             menu.add(0, MENU_JSON, 1, R.string.menu_json)
             menu.add(0, MENU_FAVORITE, 2, if (isFavorite) R.string.menu_favorite_remove else R.string.menu_favorite_add)
-            if (SessionHolder.vehicles.size > 1) menu.add(0, MENU_SWITCH, 3, R.string.menu_switch_vehicle)
-            menu.add(0, MENU_LOGOUT, 4, R.string.menu_logout)
+            menu.add(0, MENU_NICKNAME, 3, R.string.menu_nickname)
+            if (SessionHolder.vehicles.size > 1) menu.add(0, MENU_SWITCH, 4, R.string.menu_switch_vehicle)
+            menu.add(0, MENU_LOGOUT, 5, R.string.menu_logout)
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     MENU_STATUS -> startActivity(Intent(this@VehicleActivity, StatusActivity::class.java))
                     MENU_JSON -> startActivity(Intent(this@VehicleActivity, JsonActivity::class.java))
                     MENU_FAVORITE -> toggleFavorite(isFavorite)
+                    MENU_NICKNAME -> editNickname()
                     MENU_SWITCH -> goBack()
                     MENU_LOGOUT -> Navigation.confirmLogout(this@VehicleActivity)
                 }
@@ -365,7 +403,7 @@ class VehicleActivity : Activity() {
             Toast.makeText(this, R.string.garage_favorite_cleared, Toast.LENGTH_SHORT).show()
         } else {
             UconnectStore.setFavorite(this, vehicle.vin)
-            Toast.makeText(this, getString(R.string.garage_favorite_set, vehicle.name), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.garage_favorite_set, VehicleNicknames.apply(this, vehicle).name), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -402,6 +440,7 @@ class VehicleActivity : Activity() {
         private const val MENU_FAVORITE = 3
         private const val MENU_SWITCH = 4
         private const val MENU_LOGOUT = 5
+        private const val MENU_NICKNAME = 6
         private const val LOCATE_POLLS = 8
         private const val LOCATE_INTERVAL_MS = 4_000L
         private const val TICK_MS = 30_000L

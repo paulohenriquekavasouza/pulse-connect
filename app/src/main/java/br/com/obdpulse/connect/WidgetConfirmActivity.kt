@@ -22,7 +22,8 @@ class WidgetConfirmActivity : Activity() {
         }
         this.vin = vin
         command = spec.command
-        val name = UconnectStore.vehicles(this).firstOrNull { it.vin == vin }?.name ?: getString(R.string.app_name)
+        val name = UconnectStore.vehicles(this).firstOrNull { it.vin == vin }?.let { VehicleNicknames.apply(this, it).name }
+            ?: getString(R.string.app_name)
         gate = BiometricGate(
             this,
             onSuccess = {

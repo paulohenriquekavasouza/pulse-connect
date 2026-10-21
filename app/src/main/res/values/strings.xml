@@ -91,6 +91,10 @@
     <string name="menu_json">JSON da API</string>
     <string name="menu_favorite_add">Marcar como favorito</string>
     <string name="menu_favorite_remove">Remover favorito</string>
+    <string name="menu_nickname">Apelido</string>
+    <string name="nickname_title">Apelido do veículo</string>
+    <string name="nickname_message">Deixe em branco para usar o nome padrão (%1$s).</string>
+    <string name="nickname_save">Salvar</string>
     <string name="menu_switch_vehicle">Trocar veículo</string>
     <string name="menu_logout">Sair</string>
 

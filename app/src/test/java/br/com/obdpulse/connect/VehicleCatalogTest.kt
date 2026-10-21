@@ -102,6 +102,20 @@ class VehicleCatalogTest {
     }
 
     @Test
+    fun nicknameReplacesNameAndKeepsDefaultInSubtitle() {
+        val vehicle = UconnectVehicle("V1", "Fiat Pulse", "2026", setOf("RDL"), null)
+        val named = VehicleCatalog.withNickname(vehicle, "  Carro   da  Ana ")
+        assertEquals("Carro da Ana", named.name)
+        assertEquals("Fiat Pulse · 2026", named.subtitle)
+        assertEquals(vehicle.commands, named.commands)
+        assertEquals(vehicle, VehicleCatalog.withNickname(vehicle, "   "))
+        assertEquals(vehicle, VehicleCatalog.withNickname(vehicle, null))
+        assertEquals(vehicle, VehicleCatalog.withNickname(vehicle, "Fiat Pulse"))
+        assertEquals("Fiat Pulse", VehicleCatalog.withNickname(vehicle.copy(subtitle = ""), "X").subtitle)
+        assertEquals(VehicleNicknames.MAX_LENGTH, VehicleCatalog.normalizeNickname("a".repeat(50))!!.length)
+    }
+
+    @Test
     fun encodesAndDecodesVehicleSnapshot() {
         val vehicles = listOf(
             UconnectVehicle("V1", "Fiat Pulse", "2026", setOf("RDL", "REON"), "https://x/img?a=1"),

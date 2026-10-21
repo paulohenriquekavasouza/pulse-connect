@@ -58,6 +58,16 @@ object VehicleCatalog {
         }
     }
 
+    fun normalizeNickname(nickname: String?): String? =
+        nickname?.trim()?.replace(Regex("\\s+"), " ")?.take(VehicleNicknames.MAX_LENGTH)?.takeIf { it.isNotEmpty() }
+
+    fun withNickname(vehicle: UconnectVehicle, nickname: String?): UconnectVehicle {
+        val name = normalizeNickname(nickname) ?: return vehicle
+        if (name == vehicle.name) return vehicle
+        val subtitle = listOf(vehicle.name, vehicle.subtitle).filter { it.isNotBlank() }.joinToString(" · ")
+        return vehicle.copy(name = name, subtitle = subtitle)
+    }
+
     fun commands(entry: JSONObject): Set<String> {
         val result = LinkedHashSet<String>()
         entry.optJSONArray("supportedCommands")?.let { array ->
