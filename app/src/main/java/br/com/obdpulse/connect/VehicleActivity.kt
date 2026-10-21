@@ -9,6 +9,8 @@ import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.text.InputFilter
 import android.text.InputType
 import android.webkit.WebView
@@ -139,7 +141,7 @@ class VehicleActivity : Activity() {
             setPadding(pad, pad / 2, pad, 0)
             addView(input)
         }
-        AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this)
             .setTitle(R.string.nickname_title)
             .setMessage(getString(R.string.nickname_message, vehicle.name))
             .setView(container)
@@ -148,7 +150,15 @@ class VehicleActivity : Activity() {
                 VehicleNicknames.set(this, vehicle.vin, input.text.toString())
                 bindNames()
             }
-            .show()
+            .create()
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        dialog.setOnShowListener {
+            input.requestFocus()
+            input.post {
+                getSystemService(InputMethodManager::class.java).showSoftInput(input, InputMethodManager.SHOW_IMPLICIT)
+            }
+        }
+        dialog.show()
     }
 
     private fun loadVehicleInfo(pendingCommand: String?) {
