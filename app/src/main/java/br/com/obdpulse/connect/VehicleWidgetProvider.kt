@@ -65,7 +65,7 @@ class VehicleWidgetProvider : AppWidgetProvider() {
                 UconnectStore.vehicles(context),
                 UconnectStore.favorite(context),
                 UconnectStore.vin(context),
-            )
+            )?.let { VehicleNicknames.apply(context, it) }
             val image = vehicle?.imageUrl?.let { url -> withTimeoutOrNull(IMAGE_TIMEOUT_MS) { ImageLoader.load(context, url) } }?.let(::thumbnail)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 val compact = build(context, vehicle, image, compact = true)

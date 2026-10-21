@@ -43,7 +43,7 @@ class GarageActivity : Activity() {
     private fun render() {
         list.removeAllViews()
         cards.clear()
-        for (vehicle in SessionHolder.vehicles) {
+        for (vehicle in SessionHolder.vehicles.map { VehicleNicknames.apply(this, it) }) {
             val card = layoutInflater.inflate(R.layout.item_vehicle, list, false)
             card.findViewById<TextView>(R.id.vehicle_name).text = vehicle.name
             card.findViewById<TextView>(R.id.vehicle_subtitle).apply {

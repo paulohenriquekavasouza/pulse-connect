@@ -19,6 +19,7 @@ Pulse Connect é um cliente Android leve e de código aberto para a nuvem Uconne
   - Formato compacto em uma linha ou completo em 4×2, no mesmo visual do app.
   - Todos os comandos exigem rosto ou impressão digital, com o bloqueio de tela do aparelho como alternativa.
 - **Vários veículos:** cards com a imagem oficial de cada carro. Marque um favorito e o app abre direto nele.
+- **Apelidos:** dê um nome próprio a cada carro, vinculado ao VIN e salvo no aparelho. Ele aparece no app e no widget.
 - **Painel de dados:** combustível (% e litros), autonomia, hodômetro, bateria, pneus, portas e vidros. Também mostra o JSON bruto da API para quem quer ir além.
 - **Mensagens claras:** em falhas de rede, o app diz se o comando chegou ou não a ser enviado.
 - **Interface escura e direta**, pensada para uso rápido.
