@@ -31,11 +31,6 @@ object VehicleCommands {
             R.string.action_starting, R.string.action_started, R.string.action_started_short,
             R.string.biometric_start_title, accent = true,
         ),
-        CommandSpec(
-            UconnectClient.CMD_STOP, R.string.action_stop, R.drawable.ic_power_off,
-            R.string.action_stopping, R.string.action_stopped, R.string.action_stopped_short,
-            R.string.biometric_stop_title,
-        ),
     )
 
     fun of(command: String): CommandSpec? = ALL.firstOrNull { it.command == command }

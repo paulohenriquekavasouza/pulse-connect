@@ -49,20 +49,16 @@
     <string name="action_lock">Travar</string>
     <string name="action_unlock">Destravar</string>
     <string name="action_start">Ligar</string>
-    <string name="action_stop">Desligar</string>
     <string name="action_locking">Enviando travamento…</string>
     <string name="action_unlocking">Enviando destravamento…</string>
     <string name="action_starting">Enviando partida remota…</string>
-    <string name="action_stopping">Enviando desligamento…</string>
     <string name="action_locked">Comando de travar enviado ao veículo.</string>
     <string name="action_unlocked">Comando de destravar enviado ao veículo.</string>
     <string name="action_started">Comando de ligar enviado ao veículo.</string>
-    <string name="action_stopped">Comando de desligar enviado ao veículo.</string>
 
     <string name="action_locked_short">Travamento enviado</string>
     <string name="action_unlocked_short">Destravamento enviado</string>
     <string name="action_started_short">Partida remota enviada</string>
-    <string name="action_stopped_short">Desligamento enviado</string>
 
     <string name="widget_description">Comandos do seu veículo na tela inicial</string>
     <string name="widget_ready">Pronto para comandos</string>
@@ -73,7 +69,6 @@
     <string name="widget_notification">Enviando comando ao veículo…</string>
 
     <string name="biometric_lock_title">Confirme para travar</string>
-    <string name="biometric_stop_title">Confirme para desligar o veículo</string>
     <string name="biometric_app_title">Desbloquear o Pulse Connect</string>
     <string name="biometric_app_subtitle">Use a biometria ou o bloqueio de tela</string>
     <string name="login_locked">O Pulse Connect está bloqueado.</string>

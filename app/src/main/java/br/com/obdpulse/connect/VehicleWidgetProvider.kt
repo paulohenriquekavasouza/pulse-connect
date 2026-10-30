@@ -46,7 +46,6 @@ class VehicleWidgetProvider : AppWidgetProvider() {
             UconnectClient.CMD_LOCK to R.id.widget_lock,
             UconnectClient.CMD_UNLOCK to R.id.widget_unlock,
             UconnectClient.CMD_START to R.id.widget_start,
-            UconnectClient.CMD_STOP to R.id.widget_stop,
         )
 
         fun refresh(context: Context) {

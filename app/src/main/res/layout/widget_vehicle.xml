@@ -133,24 +133,5 @@
                 android:tint="@color/accent" />
         </FrameLayout>
 
-        <FrameLayout
-            android:id="@+id/widget_stop"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="6dp"
-            android:layout_weight="1"
-            android:background="@drawable/widget_tile_bg"
-            android:contentDescription="@string/action_stop">
-
-            <ImageView
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:layout_gravity="center"
-                android:background="@drawable/action_icon_bg"
-                android:contentDescription="@null"
-                android:padding="12dp"
-                android:src="@drawable/ic_power_off"
-                android:tint="@color/text_primary" />
-        </FrameLayout>
     </LinearLayout>
 </LinearLayout>

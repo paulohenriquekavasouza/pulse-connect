@@ -13,7 +13,7 @@ Pulse Connect é um cliente Android leve e de código aberto para a nuvem Uconne
 
 ## Destaques
 
-- **Comandos remotos:** travar, destravar, ligar e desligar o motor. Aparecem só os comandos que o veículo realmente suporta.
+- **Comandos remotos:** travar, destravar e ligar o motor. Aparecem só os comandos que o veículo realmente suporta.
 - **Localização:** mapa com a última posição conhecida e há quanto tempo foi atualizada. O app pede uma posição nova ao carro só quando a atual tem mais de 10 minutos, ou quando você pede.
 - **Widget para a tela inicial:**
   - Formato compacto em uma linha ou completo em 4×2, no mesmo visual do app.
